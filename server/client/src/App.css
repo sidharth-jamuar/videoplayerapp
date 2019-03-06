@@ -1,0 +1,19 @@
+.App{
+  
+}
+.flex-container{
+  display:flex;
+  margin-top:10px;
+}
+.video-container{
+  flex:65%;
+  margin-left: 10px;
+}
+.video-list{
+  flex:35%;
+}
+@media only screen and (max-width:600px){
+  .flex-container{
+    flex-direction: column;
+  }
+}
