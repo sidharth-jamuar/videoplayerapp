@@ -1,11 +1,17 @@
 const express=require("express");
 const app=express();
-const cors=require("cors")
+const mongoose=require('mongoose')
+const bodyParser=require('body-parser')
 const {list}=require("./data/VideoList")
+const keys=require("./config/keys").getKeys(process.env.NODE_ENV)
 const PORT=process.env.PORT || 3004;
-//app.use(cors({origin:"http://localhost:3000"}))
-require("./routes/videoRoutes")(app)
 
+mongoose.Promise=global.Promise;
+mongoose.connect(keys.mongoDBURI,{useNewUrlParser:true},()=>{
+  console.log("connected to database")
+})
+app.use(bodyParser.json())
+require("./routes/videoRoutes")(app)
 if (process.env.NODE_ENV === 'production') {
     // Express will serve up production assets
     // like our main.js file, or main.css file!

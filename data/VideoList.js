@@ -1,6 +1,6 @@
 exports.list={
     0:{
-        id:0,
+      
         "title":"Rocky training",
         "Description":"Rocky training montage",
         "Url":"training.mp4",
