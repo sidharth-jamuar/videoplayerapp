@@ -4,7 +4,7 @@ const mongoose=require('mongoose')
 const bodyParser=require('body-parser')
 const {list}=require("./data/VideoList")
 //const keys=require("./config/keys").getKeys(process.env.NODE_ENV)
-const {keys}=require("./config/keys")
+const keys=require("./config/keys")
 const PORT=process.env.PORT || 3004;
 
 mongoose.Promise=global.Promise;
