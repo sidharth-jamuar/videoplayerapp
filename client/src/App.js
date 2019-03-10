@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import VideoPlayer from "./components/VideoPlayer.js"
 import VideoList from "./components/VideoList"
-import NavBar from "./components/NavBar"
 import axios from "axios"
 class App extends Component {
   constructor(props){
@@ -41,7 +40,7 @@ class App extends Component {
     else{
     return (
       <div className="App">
-        <div><NavBar searchVideo={this.searchVideo}/></div>
+        
         <div className="flex-container">
         <div className="video-container"><VideoPlayer targetInfo={this.state.targetInfo} urltarget={this.state.urltarget}/></div>
         <div className="video-list"><VideoList list={mainFilteredList} playVideo={this.playVideo}/></div></div>
