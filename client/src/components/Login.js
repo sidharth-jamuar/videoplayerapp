@@ -35,9 +35,7 @@ class Login extends Component{
         e.preventDefault();
         
     }
-    loginWithGoogle(){
-       window.location="http://localhost:3004/auth/google"
-    }
+    
     render(){
         console.log(this.props.socket)
         return(
@@ -56,7 +54,7 @@ class Login extends Component{
 }
 const mapStateToProps=state=>{
     return{
-        socket:state.socket
+        
     }
 }
 export default connect(mapStateToProps)(Login)

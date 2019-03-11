@@ -10,7 +10,7 @@ const AppRouter=()=>{
        <BrowserRouter>
        <div>
        <NavBar />
-       <Route path="/" exact component={App} />
+       <Route path="/" exact component={requireAuth(App)} />
        <Route path="/login" component={Login} />
        </div>
       

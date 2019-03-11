@@ -13,9 +13,9 @@ export default function (ComposedComponent) {
     }
 
     _checkAndRedirect() {
-      const {username} = this.props;
+      const {isAuth} = this.props;
        
-      if (!username) {
+      if (!isAuth) {
        this.props.history.push("/login")
       }
     }
@@ -24,7 +24,7 @@ export default function (ComposedComponent) {
         console.log(this.props.history)
       return (
         <div>
-          { this.props.username ? <ComposedComponent {...this.props} /> : null }
+          { <ComposedComponent {...this.props} />  }
         </div>
       );
     }
@@ -32,7 +32,7 @@ export default function (ComposedComponent) {
 
   const mapStateToProps = (state) => {
     return {
-      username: state.socket.username
+    isAuth:state.isAuth
     };
   };
   

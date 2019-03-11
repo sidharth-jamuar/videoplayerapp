@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
 
 export default combineReducers({
-dummy:()=>"5"
+ isAuth:false
 })
