@@ -46,7 +46,7 @@ class Login extends Component{
                    {this.renderForm()}
                    <button type="submit" id="login-button">Login</button>
                 </form>
-                <a href="http://localhost:3004/auth/google" id="google-login-button" >Login with Google</a>
+                <a href="https://videoplayerappsid.herokuapp.com/auth/google" id="google-login-button" >Login with Google</a>
                 </div>
             </div>
         )
