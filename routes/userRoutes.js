@@ -1,4 +1,5 @@
 const passport=require('passport')
+const controllers=require("../controllers/usercontrollers")
 module.exports=app=>{
     app.get(
         '/auth/google',
@@ -20,4 +21,6 @@ module.exports=app=>{
           console.log("profile")
           console.log(req.user)//undefined
       })
+      app.post("/api/login",controllers.loginUser)
+      app.post("/api/signup",controllers.signup)
 }

@@ -14,10 +14,11 @@ export default function (ComposedComponent) {
 
     _checkAndRedirect() {
       const {isAuth} = this.props;
-       
-      if (!isAuth) {
+        const authToken=localStorage.getItem("token")
+      if (!authToken) {
        this.props.history.push("/login")
       }
+     
     }
 
     render() {
@@ -32,7 +33,7 @@ export default function (ComposedComponent) {
 
   const mapStateToProps = (state) => {
     return {
-    isAuth:state.isAuth
+    isAuth:state.isAuth.auth
     };
   };
   

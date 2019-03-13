@@ -4,6 +4,7 @@ import './App.css';
 import VideoPlayer from "./components/VideoPlayer.js"
 import VideoList from "./components/VideoList"
 import axios from "axios"
+import {connect} from "react-redux"
 class App extends Component {
   constructor(props){
     super(props)
@@ -24,7 +25,14 @@ class App extends Component {
   searchVideo=(search)=>{
     this.setState({search})
   }
+  componentDidMount(){
+    if(Object.keys(this.props.user).length!==0){
+      localStorage.setItem("token",this.props.user.user.token)
+    }
+
+  }
   render() {
+   
     const filteredList=Object.keys(this.state.list).filter(key=>this.state.list[key].title.toLowerCase().split(" ").join("").includes(this.state.search.toLowerCase().split(" ").join("")))
     const mainFilteredList={};
     for(let key of filteredList){
@@ -50,5 +58,10 @@ class App extends Component {
   }
 }
 }
-
-export default App;
+const mapStateToProps=state=>{
+  return {
+    user:state.users,
+    isAuth:state.isAuth
+  }
+}
+export default connect(mapStateToProps)(App);

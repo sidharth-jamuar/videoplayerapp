@@ -16,6 +16,13 @@ flex:20%;
 #login{
     flex:40%;
 }
+.login-button{
+    text-decoration: none;
+    
+    padding:10px 10px;
+    color:white;
+
+}
 .search{
     width:80%;
 }

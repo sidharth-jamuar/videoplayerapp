@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {createStore,applyMiddleware,combineReducers} from "redux";
 import {Provider} from "react-redux"
+import reduxThunk from "redux-thunk"
 import AppRouter from "./approuter/approuter"
 import * as serviceWorker from './serviceWorker';
 import reducers from './reducers';
-const store=createStore(reducers,{});
+const store=createStore(reducers,{},applyMiddleware(reduxThunk));
 const Jsx=()=>{
     return (
         <Provider store={store}>

@@ -2,13 +2,16 @@ import React,{Component} from "react";
 import "../css/Login.css"
 import {connect} from "react-redux"
 import axios from "axios"
+import {loginUser} from "../actions/user"
+import {withRouter} from "react-router-dom"
 class Login extends Component{
     constructor(props){
         super(props)
         this.state={
             username:"",
-            password:""
+            password:"",
         }
+       
     }
     renderForm(){
     const formFields=[{label:"Username", name:"username",type:"text"},{label:"Password", name:"password",type:"password"}];
@@ -28,16 +31,22 @@ class Login extends Component{
            )
         })
     }
+    
     handleChange(value,name){
         this.setState({[name]:value})
     }
     onSubmit(e){
         e.preventDefault();
-        
+        const {username,password}=this.state
+        const data={
+            username,
+            password
+        }
+        this.props.dispatch(loginUser(data,this.props.history))
     }
     
     render(){
-        console.log(this.props.socket)
+        console.log(this.props.isAuth)
         return(
             <div>
                 <div className="form-container">
@@ -54,7 +63,8 @@ class Login extends Component{
 }
 const mapStateToProps=state=>{
     return{
-        
+        users:state.users,
+        isAuth:state.isAuth.auth
     }
 }
-export default connect(mapStateToProps)(Login)
+export default withRouter(connect(mapStateToProps)(Login))
