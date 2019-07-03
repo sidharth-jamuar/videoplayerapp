@@ -9,11 +9,12 @@ return async dispatch=>{
     })
    if(res.data.token){
        history.push("/")
+       dispatch({type:"IS_AUTH",payload:true})
    }
 }
 }
 export const isAuthenticated=(isAuth)=>{
-    
+    console.log(isAuth)
     if(isAuth){
         var auth=true
     }

@@ -6,6 +6,7 @@ const videoSchema=new Schema({
     Description:{type:String, default:"Your video title"},
     Url:{type:String},
     image:{type:String},
+    tags:{type:Array},
     uploaded:{type:Date,default:Date.now()},
     uploader:{type:String}
 })

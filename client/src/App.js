@@ -12,8 +12,7 @@ class App extends Component {
     this.state={
       list:{},
       urltarget:"/assets/videos",
-      targetInfo:{},
-      search:""
+      targetInfo:{}
   }
   axios.get("/api/videolist").then((res)=>{{this.setState({list:res.data})}})
   }
@@ -32,14 +31,8 @@ class App extends Component {
 
   }
   render() {
-   
-    const filteredList=Object.keys(this.state.list).filter(key=>this.state.list[key].title.toLowerCase().split(" ").join("").includes(this.state.search.toLowerCase().split(" ").join("")))
-    const mainFilteredList={};
-    for(let key of filteredList){
-      
-      mainFilteredList[key]=this.state.list[key]
-    }
-    
+   console.log(this.state)
+    //const filteredList=Object.keys(this.state.list).filter(key=>this.state.list[key].title.toLowerCase().split(" ").join("").includes(this.state.search.toLowerCase().split(" ").join("")))
     if(!Object.keys(this.state.list)){
       return(
         <div>...Loading</div>
@@ -51,8 +44,8 @@ class App extends Component {
         
         <div className="flex-container">
         <div className="video-container"><VideoPlayer targetInfo={this.state.targetInfo} urltarget={this.state.urltarget}/></div>
-        <div className="video-list"><VideoList list={mainFilteredList} playVideo={this.playVideo}/></div></div>
-      
+        <div className="video-list"><VideoList playVideo={this.playVideo}/></div>
+        </div>
       </div>
     );
   }

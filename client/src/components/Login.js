@@ -46,7 +46,7 @@ class Login extends Component{
     }
     
     render(){
-        console.log(this.props.isAuth)
+        
         return(
             <div>
                 <div className="form-container">

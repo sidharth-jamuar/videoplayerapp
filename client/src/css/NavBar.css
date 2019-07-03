@@ -13,6 +13,10 @@ flex:20%;
    padding:0px 0px 0px 100px;
    flex:40%;
 }
+.icon-common{
+    color:black;
+    padding:10px 10px;
+}
 #login{
     flex:40%;
 }
