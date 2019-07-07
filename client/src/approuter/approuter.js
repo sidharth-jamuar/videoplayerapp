@@ -7,12 +7,15 @@ import Login from "../components/Login"
 import Profile from "../components/Profile"
 import {BrowserRouter,Route,Switch} from "react-router-dom"
 import VideoPlayer from "../components/VideoPlayer";
+import Homepage from "../components/Homepage"
+
 const AppRouter=()=>{
     return (
        <BrowserRouter>
        <div>
        <NavBar />
-       <Route path="/" exact component={VideoList} />
+       <Route path="/" exact component={Homepage} />
+       <Route path="/search" exact component={VideoList} />
        <Route path="/login" component={Login} />
        <Route path="/profile" component={requireAuth(Profile) } />
        <Route path="/video/:id" component={VideoPlayer} />

@@ -5,10 +5,12 @@ return async dispatch=>{
     const res=await axios.post("/api/login",data)
     dispatch({
         type:"LOGIN_USER",
-        payload:res.data
+        payload:res.data.username
     })
    if(res.data.token){
+       localStorage.setItem("user",res.data.username)
        history.push("/")
+       localStorage.setItem("token",res.data.token)
        dispatch({type:"IS_AUTH",payload:true})
    }
 }

@@ -6,6 +6,22 @@ exports.getList=(req,res)=>{
         res.send(videos)
     })
 }
+exports.uploadVideo=(req,res)=>{
+
+  const video= new Video({
+       title:req.body.title,
+       Description:req.body.Description,
+       Url:req.file.originalname,
+       image:"deku.jpg",
+        tags:["anime","music"],
+        uploader:req.body.user
+   })
+   video.save().then(video=>{console.log(req.body.user);
+   Video.find({uploader:req.body.user}).then(videos=>{
+       res.send(videos)
+   })
+  })
+}
 exports.searchVideo=(req,res)=>{
     console.log(req.query)
     let regexp=new RegExp(`${req.query.keyword}`,'gi');
@@ -15,7 +31,10 @@ exports.searchVideo=(req,res)=>{
     })
 }
 exports.getUploadedVideos=(req,res)=>{
-
+    console.log(req.query)
+    Video.find({uploader:req.query.user}).then(videos=>{
+        res.send(videos)
+    })
 }
 exports.addVideo=(req,res)=>{
     console.log(req.body)

@@ -1,0 +1,14 @@
+.btn-submit{
+    min-width:90%;
+    background:blue;
+    border:none;
+    padding:10px 10px;
+    margin:10px 10px;
+    color:white;
+}
+.cross-icon{
+    color:white;
+    float:right;
+    margin:18px 18px;
+    cursor:pointer;
+}

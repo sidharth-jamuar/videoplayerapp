@@ -1,5 +1,6 @@
 import axios from "axios";
-export const searchVideo=(keyword)=>{
+export const searchVideo=(keyword,history)=>{
+    console.log(keyword)
     return async dispatch =>{
         const res=await axios.get(`/api/searchVideo?keyword=${keyword}`)
         if(res.data){
@@ -7,6 +8,7 @@ export const searchVideo=(keyword)=>{
             type:"FETCH_VIDEOS",
             payload:res.data
         })
+        history.push("/search")
     }
     else{
         dispatch({

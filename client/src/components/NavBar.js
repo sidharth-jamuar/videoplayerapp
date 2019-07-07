@@ -28,18 +28,18 @@ this.props.dispatch(isAuthenticated(isAuth))
 render(){
     
     const isAuth=this.props.isAuth.auth
-    console.log(this.state)
+    console.log(isAuth)
     return(
         <div className="navbar">
         <div className="Logo"><span>VideoStream</span></div>
         <div className="searchBar">
       <input type="text" className="search"  placeholder="...Search by exact title or even ignore whitespaces"
       onChange={e=>{this.setState({keyword:e.target.value})}} />
-       <button onClick={e=>{this.props.dispatch(searchVideo(this.state.keyword))}}>Search</button>
+       <button onClick={e=>{this.props.dispatch(searchVideo(this.state.keyword,this.props.history))}}>Search</button>
         </div>
 
-        {isAuth && <div id="login"><FaUserAlt className="user-profile icon-common" onClick={e=>this.props.history.push("/profile")} /></div>}
-       {!isAuth && <div><Link to="/login" ><MdSend className="icon-common"/></Link></div>}
+        {isAuth && <div id="login"><button onClick={e=>this.props.history.push("/profile")}>Profile</button></div>}
+       {!isAuth && <div><Link to="/login" >Login</Link></div>}
        {isAuth && <div><button onClick={e=>{this.onlogout(e)}} ><IoIosLogOut className="icon-common"/></button></div>}
         </div>
     )

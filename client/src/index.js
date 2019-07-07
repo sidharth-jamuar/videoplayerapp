@@ -8,9 +8,10 @@ import AppRouter from "./approuter/approuter"
 import * as serviceWorker from './serviceWorker';
 import reducers from './reducers';
 const store=createStore(reducers,{},applyMiddleware(reduxThunk));
-
+console.log(localStorage.getItem("token"))
 if(localStorage.getItem("token")){
     store.dispatch({type:"IS_AUTH",payload:true})
+    store.dispatch({type:"LOGIN_USER",payload:localStorage.getItem("user")})
 }
 const Jsx=()=>{
     return (
