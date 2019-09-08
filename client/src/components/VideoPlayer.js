@@ -33,7 +33,7 @@ class VideoPlayer extends Component{
         console.log(targetInfo)
         return(
             <div>
-                <div className="react-player"><ReactPlayer url={`/assets/videos/${targetInfo.Url}`} controls playing ref={this.video}  width="100%" height="100%"/></div>
+                <div className="react-player"><ReactPlayer url={`/assets/videos/${targetInfo.Url}`} controls playing ref={this.video} pip  width="100%" height="100%"/></div>
                 
                 <div className="target-info-container">
                 {targetInfo.title && <div><span>Title:</span>{targetInfo.title}</div>}  
