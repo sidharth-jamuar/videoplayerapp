@@ -1,4 +1,4 @@
 node_modules
 config/dev.js
 setupProxy.js
-client/config/keys.js
+config/keys.js
