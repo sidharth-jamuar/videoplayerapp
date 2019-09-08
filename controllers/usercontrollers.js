@@ -27,6 +27,9 @@ exports.signup=(req,res)=>{
         });
     user.save().then(doc=>res.send(doc))
     })
-    
-    
+
+}
+exports.googleLogin=(req,res)=>{
+    console.log(req.body._profile)
+    res.send({username:req.body._profile.name,token:req.body._token.accessToken})
 }

@@ -1,0 +1,11 @@
+.carousel-container{
+    display: flex;
+    flex-wrap: wrap;
+   
+    height:250px;
+    box-shadow: 0px 10px 10px 0px;
+    margin-left:10px;
+}
+#myCarousel{
+    height:250px;
+}

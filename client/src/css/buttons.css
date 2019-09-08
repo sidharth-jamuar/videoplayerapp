@@ -1,3 +1,14 @@
+.buttons-container{
+    display: inline-block;
+    flex:40%;
+    justify-content: flex-start;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+.button-item{
+  display:inline;
+  margin:0px 10px;
+}
 .btn-submit{
     min-width:90%;
     background:blue;
@@ -11,4 +22,46 @@
     float:right;
     margin:18px 18px;
     cursor:pointer;
+}
+
+
+.btn-search{
+color:white;
+background:green;
+margin-left:10px;
+font-weight: 400;
+font-size:16px;
+width:60px;
+height:34px;
+transition: all 0.5s ease-in;
+}
+.btn-search:hover{
+    transform:skewX(20deg);
+    background-color: lightgreen;
+    color:black;
+}
+.btn-common{
+border:none;
+text-decoration: none;
+color:white;
+}
+.btn-common:hover{
+    color:red;
+    cursor:pointer;
+}
+.btn-login{
+    margin-left:5px;
+    margin-top:1px;
+    margin-right:5px;
+    font-weight:100;
+    text-decoration: none;
+}
+.btn-signup{
+background: none;
+}
+.btn-profile{
+    background: none;
+}
+.btn-signup:hover{
+    color:red;
 }

@@ -5,7 +5,7 @@ export const searchVideo=(keyword,history)=>{
         const res=await axios.get(`/api/searchVideo?keyword=${keyword}`)
         if(res.data){
         dispatch({
-            type:"FETCH_VIDEOS",
+            type:"SEARCH_VIDEOS",
             payload:res.data
         })
         history.push("/search")

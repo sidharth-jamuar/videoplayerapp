@@ -1,35 +1,59 @@
 .navbar{
-    background-image: linear-gradient(to right,black,red);
-    height:40px;
+    background-image: linear-gradient(to bottom,black 5%,transparent 95%);
+    border-bottom: none;
+}
+#navbar{
+    height:60px;
     color:white;
     text-align: left;
     font-size: 20px;
     display: flex;
+    width: 100%;
+    position: fixed;
+    top:0;
+  padding-top:10px;
+  z-index:6;
+  flex-wrap: wrap;
+}
+.solid-navbar{
+    background-image: linear-gradient(to bottom,black 0%,white 100%);
+  
+  animation-name: solidNavbar;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 .Logo{
 flex:20%;
 }
 .searchBar{
-   padding:0px 0px 0px 100px;
+   padding:4px 0px 0px 50px;
    flex:40%;
+  display:flex;
+}
+.main-buttons-container{
+    flex:40%;
 }
 .icon-common{
     color:black;
     padding:10px 10px;
 }
 #login{
-    flex:40%;
-}
-.login-button{
+   
     text-decoration: none;
-    
-    padding:10px 10px;
-    color:white;
-
-}
+} 
 .search{
-    width:80%;
+   
+   height:30px;
+   color:black;
 }
+.search:hover{
+    border:1px solid blue;
+}
+.btn-search{
+ 
+}
+
+
 .navbar:hover{
   animation-name: navbarAnimate;
   animation-duration: 1s;
@@ -37,9 +61,28 @@ flex:20%;
 }
 @keyframes navbarAnimate{
     0%{
-        height:40px;
+        height:60px;
     }
     100%{
-        height:50px;
+        height:80px;
+    }
+}
+@keyframes solidNavbar{
+    0%{
+        transform: translateY(-80px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+@media screen and (max-width:748px){
+    .solid-navbar{
+        display:none;
+    }
+    #navbar{
+        display:none; 
+    }
+    .navbar{
+        display:none;
     }
 }

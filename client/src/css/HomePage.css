@@ -1,0 +1,14 @@
+.homepage-container{
+    min-height:1440px;
+    display:flex;
+    flex-direction: column;
+    margin:100px 10px 10px 10px;
+}
+.homepage-container .heading{
+    margin:10px;
+    color: black;
+    transition: transform 0.5s;
+}
+.homepage-container .heading:hover{
+    transform: scaleY(1.5);
+}

@@ -11,7 +11,7 @@ exports.uploadVideo=(req,res)=>{
   const video= new Video({
        title:req.body.title,
        Description:req.body.Description,
-       Url:req.file.originalname,
+       Url:req.file.originalname.split(" ").join("").trim(),
        image:"deku.jpg",
         tags:["anime","music"],
         uploader:req.body.user
@@ -55,4 +55,17 @@ exports.deleteTagFromVideo=(req,res)=>{
         {$pull:{tags:req.query.tag1}},
 {$new:true})
     .then(video=>{console.log(video);res.send(video)})
+}
+exports.fetchLatestVideos=(req,res)=>{
+    Video.find({}).sort({uploaded:-1}).limit(5)
+    .then(video=>res.send(video))
+}
+exports.incrementView=(req,res)=>{
+    console.log(req.query.id)
+    Video.findOneAndUpdate({_id:req.query.id},{$inc:{views:1}},{$new:true})
+    .then(video=>{res.send(video)})
+}
+exports.fetchMostViewedVideos=(req,res)=>{
+    Video.find({}).sort({views:-1}).limit(5)
+    .then(video=>res.send(video));
 }

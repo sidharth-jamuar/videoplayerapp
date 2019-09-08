@@ -12,16 +12,16 @@ class VideoList extends React.Component{
     renderList(){
         console.log(this.props.videos)
 
-        const list=this.props.videos
-        return Object.keys(list).map(keys=>{
+        const list=this.props.videos.searchResults
+        return list.map(keys=>{
            
             return(
-                <div key={list[keys].id}>
-                <div className="list-container"  onClick={e=>{this.playVideo(list[keys])}}>
-                <div className="image-container"><img src={`/assets/images/${list[keys].image}`} height="100px" width="100px" /></div>
-                <div className="details-container">
-                <div className="details"><span>Title: </span>{list[keys].title}</div>
-                <div className="details"><span>Desc: </span>{list[keys].Description}</div>
+                <div key={keys.id}>
+                <div className="list-container"  onClick={e=>{this.playVideo(keys)}}>
+                <div className="list-image-container" style={{width:"20px",height:"100px"}} ><img src={`/assets/images/${keys.image}`}  style={{width:"10px",height:"200px"}}/></div>
+                <div className="list-details-container">
+                <div className="details">Title: {keys.title}</div>
+                <div className="details"><span>Desc: </span>{keys.Description}</div>
                 </div>
                
                 </div>
@@ -32,9 +32,9 @@ class VideoList extends React.Component{
     }
     render(){
   
-    if(Object.keys(this.props.videos).length >0){
+    if(this.props.videos.searchResults && this.props.videos.searchResults.length >0){
         return(
-            <div>
+            <div className="VideoList">
                {this.renderList()}
                
             </div>

@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import {connect} from "react-redux"
 import "../css/Profile.css"
+import "../css/spinner.css"
 import "../css/buttons.css"
 import {uploadVideo,fetchMyVideos} from "../actions/videos"
 class Profile extends Component{
@@ -24,6 +25,7 @@ class Profile extends Component{
         fd.append('title',this.state.title);
         fd.append('Description',this.state.Description);
         fd.append('user',this.props.user)
+       
        this.props.dispatch(uploadVideo(fd))
        this.setState({uploadLink:false,showVideos:true})
     }
@@ -58,9 +60,9 @@ class Profile extends Component{
             <div className="profile-container">
             <div className="profile-data">
             <ul className="profile-list">
-           <li> Welcome {this.props.user}</li>
-           <li onClick={e=>{this.setState(prevstate=>{return{uploadLink:!prevstate.uploadLink}})}}>Upload Video</li>
-           <li onClick={e=>{this.openMyVideos()}}>My Videos</li>
+           <li className="profile-list-item"> Welcome {this.props.user}</li>
+           <li  className="profile-list-item" onClick={e=>{this.setState(prevstate=>{return{uploadLink:!prevstate.uploadLink,showVideos:false}})}}>Upload Video</li>
+           <li  className="profile-list-item" onClick={e=>{this.openMyVideos()}}>My Videos</li>
             </ul>
             </div>
             <div className="profile-body">
@@ -69,13 +71,13 @@ class Profile extends Component{
             <form onSubmit={this.onSubmit}>
             <span className="cross-icon" onClick={e=>{this.setState({uploadLink:false})}}>X</span>
             <div className="input-container">
-            <input type="file" onChange={e=>{this.setState({selectedFile:e.target.files[0]})}}/>
+            <input className="input-file" type="file" onChange={e=>{this.setState({selectedFile:e.target.files[0]})}}/>
             </div>
             <div className="input-container">
-            <label>Title</label><input type="text" onChange={e=>{this.setState({title:e.target.value})}} />
+            <label>Title</label><input className="input-text" type="text" onChange={e=>{this.setState({title:e.target.value})}} />
             </div>
             <div className="input-container">
-            <label>Description</label><input type="text" onChange={e=>{this.setState({Description:e.target.value})}}/>
+            <label>Description</label><input className="input-text" type="text" onChange={e=>{this.setState({Description:e.target.value})}}/>
             </div>
            
             <button type="submit" className="btn-submit">Upload</button>
@@ -85,7 +87,7 @@ class Profile extends Component{
           
             {this.state.showVideos ?
             <div className="own-video-container">
-            {Object.keys(this.props.videos).length >0?<div>{this.renderMyVideos()}</div>:<div>Loading</div>}
+            {Object.keys(this.props.videos).length >0?<div>{this.renderMyVideos()}</div>:<div className="loader" />}
             </div>:null}
             </div>
             </div>

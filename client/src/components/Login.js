@@ -4,6 +4,7 @@ import {connect} from "react-redux"
 import axios from "axios"
 import {loginUser} from "../actions/user"
 import {withRouter} from "react-router-dom"
+import SocialButtons from "../components/SocialButtons"
 class Login extends Component{
     constructor(props){
         super(props)
@@ -55,7 +56,8 @@ class Login extends Component{
                    {this.renderForm()}
                    <button type="submit" id="login-button">Login</button>
                 </form>
-                <a href="https://videoplayerappsid.herokuapp.com/auth/google" id="google-login-button" >Login with Google</a>
+                {/* <a href="https://videoplayerappsid.herokuapp.com/auth/google" id="google-login-button" >Login with Google</a> */}
+                <SocialButtons />
                 </div>
             </div>
         )

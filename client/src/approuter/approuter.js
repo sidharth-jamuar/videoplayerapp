@@ -9,6 +9,7 @@ import {BrowserRouter,Route,Switch} from "react-router-dom"
 import VideoPlayer from "../components/VideoPlayer";
 import Homepage from "../components/Homepage"
 
+import Footer from "../components/Footer.js"
 const AppRouter=()=>{
     return (
        <BrowserRouter>
@@ -19,6 +20,7 @@ const AppRouter=()=>{
        <Route path="/login" component={Login} />
        <Route path="/profile" component={requireAuth(Profile) } />
        <Route path="/video/:id" component={VideoPlayer} />
+       <Footer />
        </div>
       
        </BrowserRouter>

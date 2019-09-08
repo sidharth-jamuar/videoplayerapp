@@ -22,5 +22,6 @@ module.exports=app=>{
           console.log(req.user)//undefined
       })
       app.post("/api/login",controllers.loginUser)
+      app.post("/api/googleLogin",controllers.googleLogin)
       app.post("/api/signup",controllers.signup)
 }

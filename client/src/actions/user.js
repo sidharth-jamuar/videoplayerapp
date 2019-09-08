@@ -15,6 +15,7 @@ return async dispatch=>{
    }
 }
 }
+
 export const isAuthenticated=(isAuth)=>{
     console.log(isAuth)
     if(isAuth){
@@ -28,3 +29,17 @@ export const isAuthenticated=(isAuth)=>{
         payload:auth
     }
 }
+export const loginGoogleUser=(data={},history)=>{
+       return  dispatch=>{
+console.log(data)
+   dispatch({
+        type:"Login_USER",
+        payload:data.username
+    })
+    if(data.token){
+        localStorage.setItem("user",data.username)
+        history.push("/")
+        localStorage.setItem("token",data.token)
+        dispatch({type:"IS_AUTH",payload:true})
+    }
+       }}

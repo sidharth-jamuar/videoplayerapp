@@ -1,6 +1,8 @@
 import React,{Component} from "react";
 import ReactPlayer from "react-player"
 import "../css/VideoPlayer.css"
+import {connect} from "react-redux";
+import {incrementView} from "../actions/videos"
 class VideoPlayer extends Component{
     constructor(props){
         super(props)
@@ -19,10 +21,13 @@ class VideoPlayer extends Component{
     }
     componentDidUpdate(){
         const targetInfo=this.props.location.state.activeVideo
-  this.video.current.seekTo(localStorage.getItem(`${targetInfo.title}`))
-      
+  this.video.current.seekTo(localStorage.getItem(`${targetInfo.title}`))  
     }
-    
+    componentDidMount(){
+        const video=this.props.location.state.activeVideo;
+        this.props.incrementView(video._id)
+
+    }
     render(){
         const targetInfo=this.props.location.state.activeVideo
         console.log(targetInfo)
@@ -33,10 +38,16 @@ class VideoPlayer extends Component{
                 <div className="target-info-container">
                 {targetInfo.title && <div><span>Title:</span>{targetInfo.title}</div>}  
               {targetInfo.Description && <div><span>Description:</span>{targetInfo.Description}</div>}  
+              {targetInfo.views && <div><span>Views:</span>{targetInfo.views}</div>} 
                 </div>
               
             </div>
         )
     }
 }
-export default VideoPlayer;
+const mapStateToProps=state=>{
+    return{
+
+    }
+}
+export default connect(mapStateToProps,{incrementView})(VideoPlayer);
