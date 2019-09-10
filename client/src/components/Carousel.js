@@ -29,8 +29,8 @@ class CarouselView extends React.Component{
           
           <img src={`${path}/${video["image"]}`} alt="Chania" style={{width:"50px",height:"250px"}} />
           <div className="carousel-caption">
-            <h3>{video["title"]}</h3>
-            <p>{video["Description"]}</p>
+            <div>Title<h3>{video["title"]}</h3></div>
+           <div>Description<p>{video["Description"]}</p></div> 
           </div>
  
      </div>)

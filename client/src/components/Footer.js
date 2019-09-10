@@ -5,11 +5,13 @@ import {faHome,faSearch,faUser,faArrowLeft,faPlay,faSignInAlt,faSignOutAlt } fro
 import screenIsMobile from "../hoc/isMobile"
 import {withRouter} from "react-router-dom"
 import {connect} from "react-redux"
+import {searchVideo} from "../actions/search"
 class  Footer extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            searchBar:false
+            searchBar:false,
+            keyword:""
         }
     }
     render()
@@ -21,15 +23,15 @@ class  Footer extends React.Component{
     
             <FontAwesomeIcon className="icon-fawesome" icon={faHome} size="2x" color="white" onClick={e=>this.props.history.push("/")}/>
             <FontAwesomeIcon className="icon-fawesome" icon={faSearch} size="2x" color="white" onClick={e=>{this.setState({searchBar:true})}}/>
-            <FontAwesomeIcon className="icon-fawesome" icon={faPlay} size="2x" color="white" />
+            <FontAwesomeIcon className="icon-fawesome" icon={faPlay} size="2x" color="white" onClick={e=>this.props.dispatch(searchVideo("",this.props.history))} />
             {isAuth &&<FontAwesomeIcon className="icon-fawesome" icon={faUser} size="2x" color="white" />}
             {!isAuth && <FontAwesomeIcon className="icon-fawesome" icon={faSignInAlt} size="2x" color="white" onClick={e=>{this.props.history.push("/login")}} />}
            {isAuth && <FontAwesomeIcon className="icon-fawesome" icon={faSignOutAlt} size="2x" color="white" />}
             </div>}
             {this.props.isMobile && this.state.searchBar && 
             <div className="searchBar-footer-container">
-                <input type="text" id="search-input-footer" />
-                <button id="btn-footer">Search</button> 
+                <input type="text" id="search-input-footer"  onChange={e=>{this.setState({keyword:e.target.value})}}/>
+                <FontAwesomeIcon className="icon-fawesome" id="btn-footer" icon={faSearch} size="2x" color="white" onClick={e=>this.props.dispatch(searchVideo(this.state.keyword,this.props.history))}/>
                 <div className="close-btn" onClick={e=>{this.setState({searchBar:false})}}>x</div>
             </div>}
             </React.Fragment>

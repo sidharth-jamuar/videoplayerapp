@@ -9,3 +9,9 @@
 #myCarousel{
     height:250px;
 }
+.carousel-caption{
+ 
+    bottom:0;
+   
+    display:flex;
+}
