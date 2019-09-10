@@ -2,6 +2,7 @@ const controllers=require("../controllers/videocontrollers")
 const aws=require('aws-sdk');
 const multerS3=require('multer-s3');
 const multer=require("multer");
+const path=require("path")
 const s3 = new aws.S3({
    accessKeyId: 'AKIASXVMCXKNMSFCXRGO',
    secretAccessKey: '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',
@@ -9,7 +10,7 @@ const s3 = new aws.S3({
   });
 const storage=multer.diskStorage({
    destination:function(req,file,cb){
-      cb(null,"./client/public/assets/videos")
+      cb(null,path.resolve(__dirname,".././client/public/assets/videos"));
    },
    filename:function(req,file,cb){
       cb(null,file.originalname.trim().split(" ").join(""))

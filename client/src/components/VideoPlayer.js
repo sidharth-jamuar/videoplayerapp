@@ -45,9 +45,5 @@ class VideoPlayer extends Component{
         )
     }
 }
-const mapStateToProps=state=>{
-    return{
 
-    }
-}
-export default connect(mapStateToProps,{incrementView})(VideoPlayer);
+export default connect(null,{incrementView})(VideoPlayer);
