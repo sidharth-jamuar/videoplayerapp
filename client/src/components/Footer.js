@@ -1,27 +1,42 @@
 import React from "react";
 import "../css/Footer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faHome,faSearch,faUser,faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import {faHome,faSearch,faUser,faArrowLeft,faPlay,faSignInAlt,faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import screenIsMobile from "../hoc/isMobile"
 import {withRouter} from "react-router-dom"
 import {connect} from "react-redux"
-const Footer=(props)=>{
-    console.log(props)
-    const isAuth=props.isAuth
+class  Footer extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={
+            searchBar:false
+        }
+    }
+    render()
+    {
+    const isAuth=this.props.isAuth
     return (
-        <React.Fragment>
-            {props.isMobile && <div className="footer-container">
+      <React.Fragment>
+            {this.props.isMobile && !this.state.searchBar && <div className="footer-container">
     
-            <FontAwesomeIcon className="icon-fawesome" icon={faHome} size="2x" color="white" onClick={e=>props.history.push("/")}/>
-            <FontAwesomeIcon className="icon-fawesome" icon={faSearch} size="2x" color="white" />
+            <FontAwesomeIcon className="icon-fawesome" icon={faHome} size="2x" color="white" onClick={e=>this.props.history.push("/")}/>
+            <FontAwesomeIcon className="icon-fawesome" icon={faSearch} size="2x" color="white" onClick={e=>{this.setState({searchBar:true})}}/>
+            <FontAwesomeIcon className="icon-fawesome" icon={faPlay} size="2x" color="white" />
             {isAuth &&<FontAwesomeIcon className="icon-fawesome" icon={faUser} size="2x" color="white" />}
-            {!isAuth && <FontAwesomeIcon className="icon-fawesome" icon={faUser} size="2x" color="white" onClick={e=>{props.history.push("/login")}} />}
-            <FontAwesomeIcon className="icon-fawesome" icon={faArrowLeft} size="2x" color="white" />
+            {!isAuth && <FontAwesomeIcon className="icon-fawesome" icon={faSignInAlt} size="2x" color="white" onClick={e=>{this.props.history.push("/login")}} />}
+           {isAuth && <FontAwesomeIcon className="icon-fawesome" icon={faSignOutAlt} size="2x" color="white" />}
             </div>}
-        </React.Fragment>
+            {this.props.isMobile && this.state.searchBar && 
+            <div className="searchBar-footer-container">
+                <input type="text" id="search-input-footer" />
+                <button id="btn-footer">Search</button> 
+                <div className="close-btn" onClick={e=>{this.setState({searchBar:false})}}>x</div>
+            </div>}
+            </React.Fragment>
          
     )
-}
+            }
+        }
 const mapStateToProps=state=>{
     return{
         isAuth:state.isAuth.auth
