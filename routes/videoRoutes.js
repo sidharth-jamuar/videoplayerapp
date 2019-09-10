@@ -3,11 +3,7 @@ const aws=require('aws-sdk');
 const multerS3=require('multer-s3');
 const multer=require("multer");
 const path=require("path")
-const s3 = new aws.S3({
-   accessKeyId: 'AKIASXVMCXKNMSFCXRGO',
-   secretAccessKey: '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',
-   Bucket: 'videoplayerapppolicy'
-  });
+
 const storage=multer.diskStorage({
    destination:function(req,file,cb){
       cb(null,path.resolve(__dirname,".././client/public/assets/videos"));
@@ -16,14 +12,7 @@ const storage=multer.diskStorage({
       cb(null,file.originalname.trim().split(" ").join(""))
    }
 })
-// const storage=multerS3({
-//    s3:s3,
-//   bucket: 'videoplayerapppolicy',
-//   acl: 'public-read',
-//   key:function(req,file,cb){
-//       cb(null,file.originalname.trim().split(" ").join(""))
-//    }
-// })
+
 const upload=multer({storage})
 module.exports=app=>{
    app.get("/api/videolist",controllers.getList)
