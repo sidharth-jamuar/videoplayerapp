@@ -16,7 +16,7 @@
   flex-wrap: wrap;
 }
 .solid-navbar{
-    background-image: linear-gradient(to bottom,black 0%,white 100%);
+    background-image: linear-gradient(to bottom,black 95%,white 100%);
   
   animation-name: solidNavbar;
   animation-duration: 1s;

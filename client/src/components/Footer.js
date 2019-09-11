@@ -6,6 +6,7 @@ import screenIsMobile from "../hoc/isMobile"
 import {withRouter} from "react-router-dom"
 import {connect} from "react-redux"
 import {searchVideo} from "../actions/search"
+import {isAuthenticated} from "../actions/user"
 class  Footer extends React.Component{
     constructor(props){
         super(props)
@@ -14,6 +15,12 @@ class  Footer extends React.Component{
             keyword:""
         }
     }
+    onlogout(e){
+        e.preventDefault();
+        localStorage.removeItem("token");
+        const isAuth=false
+        this.props.dispatch(isAuthenticated(isAuth))
+        }
     render()
     {
     const isAuth=this.props.isAuth
@@ -24,9 +31,9 @@ class  Footer extends React.Component{
             <FontAwesomeIcon className="icon-fawesome" icon={faHome} size="2x" color="white" onClick={e=>this.props.history.push("/")}/>
             <FontAwesomeIcon className="icon-fawesome" icon={faSearch} size="2x" color="white" onClick={e=>{this.setState({searchBar:true})}}/>
             <FontAwesomeIcon className="icon-fawesome" icon={faPlay} size="2x" color="white" onClick={e=>this.props.dispatch(searchVideo("",this.props.history))} />
-            {isAuth &&<FontAwesomeIcon className="icon-fawesome" icon={faUser} size="2x" color="white" />}
+            {isAuth &&<FontAwesomeIcon className="icon-fawesome" icon={faUser} size="2x" color="white" onClick={e=>{this.props.history.push("/profile")}} />}
             {!isAuth && <FontAwesomeIcon className="icon-fawesome" icon={faSignInAlt} size="2x" color="white" onClick={e=>{this.props.history.push("/login")}} />}
-           {isAuth && <FontAwesomeIcon className="icon-fawesome" icon={faSignOutAlt} size="2x" color="white" />}
+           {isAuth && <FontAwesomeIcon className="icon-fawesome" icon={faSignOutAlt} size="2x" color="white" onClick={e=>{this.onlogout(e)}} />}
             </div>}
             {this.props.isMobile && this.state.searchBar && 
             <div className="searchBar-footer-container">

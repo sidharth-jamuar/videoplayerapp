@@ -1,20 +1,23 @@
-.form-container{
+.form-container-login{
     display:flex;
     flex-direction: column;
-    margin:auto;
-    width:50%;
+    width:40%;
     z-index:10;
     border-color: aqua;
     box-shadow: 0px 10px 15px 0px;
-    margin-top: 200px;
+    position: absolute;
+    top:30%;
+    left:30%;
+    transform:translateX(-50%,-50%);
+    background: linear-gradient(to bottom,black 95%,transparent 5%);
 }
 h4{
     color:white;
     text-align: center;
 }
-.field-container{
+.field-container-login{
     display: flex;
-   
+   flex-direction: column;
     
 }
 .label-field{
@@ -28,28 +31,31 @@ text-align: center;
 margin-bottom: 10px;
 }
 .input{
-    width:60%;
-    background-color: grey;
+    width:90%;
+    background-color: white;
     height:20px;
     color:white;
+    
 }
 #login-button{
-    margin:5% 50%;
+    margin:5% 20%;
    border:none;
-   border-radius: 10px;
-   width:100px;
+   
+   width:60%;
    color:white;
    padding:10px 10px;
    cursor: pointer;
     background-color:blue;
 }
-#google-login-button{
-    margin:0 40%;
+.login-social{
+    background-color: black;
     border:none;
-    border-radius: 10px;
-    width:200px;
     color:white;
-    padding:10px 10px;
-    cursor: pointer;
-     background-color:red;
+  
+}
+.login-social-container{
+    display:flex;
+    flex-grow:1;
+    flex-direction: row;
+    flex-wrap:wrap;
 }

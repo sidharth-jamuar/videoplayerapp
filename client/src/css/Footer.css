@@ -1,12 +1,13 @@
 .footer-container{
     width:100%;
     height:40px;
-    background: linear-gradient(to bottom, black 5%,transparent 95%);
+    /* background: linear-gradient(to bottom, black 5%,transparent 95%); */
     position:fixed;
     bottom:0;
     z-index:10;
     display:flex;
     flex-grow: 1;
+    background-color: black;
 }
 .icon-fawesome{
     flex:20%;
@@ -26,9 +27,9 @@
     animation-fill-mode: forwards;
 }
 #search-input-footer{
-flex:70%;
+flex:80%;
 border:none;
-background-color: #5d5454;
+background-color: black;
 color:white;
 }
 #search-input-footer:hover{
@@ -39,13 +40,13 @@ color:white;
     margin-left:5px;
     border:none;
     text-decoration: none;
-    color:white;
-    flex:15%;
+    color:black;
+    flex:10%;
 }
 .close-btn{
-    flex:15%;
+    flex:10%;
     height:40px;
-    color:white;
+    color:black;
     width:20px;
     text-align: center;
     cursor:pointer;

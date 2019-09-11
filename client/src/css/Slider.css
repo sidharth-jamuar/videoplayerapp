@@ -3,10 +3,6 @@ html {
   /* scroll-behavior: smooth; */
 }
 
-body {
-  margin: 0;
-  background-color: #000;
-}
 
 h1 {
   font-family: Arial;
@@ -59,6 +55,6 @@ h1 {
     }
   
 .slider-container{
-  color:white;
-  
+  color:black;
+
 }

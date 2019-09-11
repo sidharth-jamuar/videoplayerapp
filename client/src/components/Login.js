@@ -19,7 +19,7 @@ class Login extends Component{
        return formFields.map((field,i)=>{
            return(
                <React.Fragment key={i}>
-               <div className="field-container">
+               <div className="field-container-login">
                <div className="label-field"> <label>{field.label}</label></div>
                <div className="input-field">
                <input  type={field.type} className="input"
@@ -50,8 +50,8 @@ class Login extends Component{
         
         return(
             <div>
-                <div className="form-container">
-                <h4>Login to Chat</h4>
+                <div className="form-container-login">
+                <h4>Login</h4>
                 <form onSubmit={e=>{this.onSubmit(e)}}>
                    {this.renderForm()}
                    <button type="submit" id="login-button">Login</button>
