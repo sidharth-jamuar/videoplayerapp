@@ -32,7 +32,7 @@ class SocialButtons extends React.Component{
         {name:"google",appId:keys.googleAppId,icon:faInstagram},
         {name:"google",appId:keys.googleAppId,icon:faTwitter} ]
       return media.map((button,i)=>{ return(
-            <div>
+           
             <SocialButton
             className="login-social"
               provider={button.name}
@@ -42,7 +42,7 @@ class SocialButtons extends React.Component{
             >
                <FontAwesomeIcon className="icon-fawesome" icon={button.icon} size="2x" color="white"/>
             </SocialButton>
-          </div>
+         
         )} )
     }
     render(){

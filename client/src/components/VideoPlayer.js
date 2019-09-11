@@ -32,13 +32,14 @@ class VideoPlayer extends Component{
         const targetInfo=this.props.location.state.activeVideo
         console.log(targetInfo)
         return(
-            <div>
+            <div className="react-player-container">
                 <div className="react-player"><ReactPlayer url={`/assets/videos/${targetInfo.Url}`} controls playing ref={this.video} pip  width="100%" height="100%"/></div>
                 
                 <div className="target-info-container">
+                {targetInfo.views && <div><span>Views:</span>{targetInfo.views}</div>} 
                 {targetInfo.title && <div><span>Title:</span>{targetInfo.title}</div>}  
               {targetInfo.Description && <div><span>Description:</span>{targetInfo.Description}</div>}  
-              {targetInfo.views && <div><span>Views:</span>{targetInfo.views}</div>} 
+             
                 </div>
               
             </div>

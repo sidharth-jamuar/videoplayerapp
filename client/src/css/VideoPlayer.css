@@ -1,7 +1,23 @@
 .target-info-container{
-    margin-top:60px;
+    margin-top:5px;
+    background-color: #f3f3f3;
+    
 }
-.react-player{
-    position: relative;
-  
+.react-player-container{
+    display:flex;
+    flex-direction: column;
+    width:50%;
+    margin-top:60px;
+    margin-left:20px;
+}
+
+@media screen and (max-width:748px){
+    .react-player-container{
+        display:flex;
+        flex-direction: column;
+        width:100%;
+        margin-top:0;
+        
+    }
+    
 }

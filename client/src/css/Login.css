@@ -38,10 +38,10 @@ margin-bottom: 10px;
     
 }
 #login-button{
-    margin:5% 20%;
+    margin:2% 5%;
    border:none;
    
-   width:60%;
+   width:90%;
    color:white;
    padding:10px 10px;
    cursor: pointer;
@@ -51,11 +51,12 @@ margin-bottom: 10px;
     background-color: black;
     border:none;
     color:white;
-  
+  flex:20%;
 }
 .login-social-container{
     display:flex;
-    flex-grow:1;
+    
     flex-direction: row;
     flex-wrap:wrap;
+    width:100%;
 }

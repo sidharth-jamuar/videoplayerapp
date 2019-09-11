@@ -12,3 +12,6 @@
 .homepage-container .heading:hover{
     transform: scaleY(1.5);
 }
+.homepage-container #most-viewed{
+    margin-top:30px;
+}

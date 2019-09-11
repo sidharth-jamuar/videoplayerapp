@@ -1,14 +1,12 @@
 import React from "react"
 import "../css/VideoList.css"
 import {connect} from "react-redux"
+import spinner from "../css/gifs/spinner.gif"
 class VideoList extends React.Component{
     constructor(props){
         super(props);
     }
-    playVideo=(activeVideo)=>{
-        console.log(activeVideo);
-        this.props.history.push({pathname:`/video/${activeVideo._id}`,state:{activeVideo}})
-    }
+   
     renderList(){
         console.log(this.props.videos)
 
@@ -17,7 +15,7 @@ class VideoList extends React.Component{
            
             return(
                 <div key={keys.id}>
-                <div className="list-container"  onClick={e=>{this.playVideo(keys)}}>
+                <div className="list-container"  onClick={e=>{this.props.playVideo(keys)}}>
                 <div className="list-image-container" style={{width:"20px",height:"100px"}} ><img src={`/assets/images/${keys.image}`}  style={{width:"10px",height:"200px"}}/></div>
                 <div className="list-details-container">
                 <div className="details">Title: {keys.title}</div>
@@ -42,7 +40,7 @@ class VideoList extends React.Component{
     }
     else{
         return(
-            <div>fetching videos</div>
+           <div className="loader loader-search"><img src={spinner} width="40px" height="40px"/></div>
         )
     }
       

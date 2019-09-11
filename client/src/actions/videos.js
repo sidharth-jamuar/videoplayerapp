@@ -43,9 +43,9 @@ export const fetchLatestVideos=()=>{
         })
     }
 }
-export const fetchMostViewedVideos=()=>{
+export const fetchMostViewedVideos=(isMobile)=>{
     return async dispatch=>{
-        const res=await axios.get("/api/mostViewedVideos");
+        const res=await axios.get(`/api/mostViewedVideos?isMobile=${isMobile}`);
         dispatch({
             type:"FETCH_MOST_VIEWED",
             payload:res.data

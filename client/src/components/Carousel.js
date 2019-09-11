@@ -6,17 +6,17 @@ import "../css/spinner.css"
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../css/Carousel.css"
 import {Carousel} from "react-responsive-carousel"
+import spinner from "../css/gifs/spinner.gif"
+import playVideo from "../hoc/playVideo"
 class CarouselView extends React.Component{
+
     constructor(props){
         super(props);
     }
     componentDidMount(){
         this.props.fetchLatestVideos()
     }
-    playVideo=(activeVideo)=>{
-        console.log(activeVideo);
-        this.props.history.push({pathname:`/video/${activeVideo._id}`,state:{activeVideo}})
-    }
+   
     renderCarousel(){
         const videos=this.props.videos.latestVideos;
         const path=`/assets/images`
@@ -25,7 +25,7 @@ class CarouselView extends React.Component{
         return videos.map((video,i)=>{
             console.log(video["image"])
             return (
-            <div className={`item ${i===0?"active":""}`} key={i} onClick={e=>{this.playVideo(video)}}>
+            <div className={`item ${i===0?"active":""}`} key={i} onClick={e=>{this.props.playVideo(video)}}>
           
           <img src={`${path}/${video["image"]}`} alt="Chania" style={{width:"50px",height:"250px"}} />
           <div className="carousel-caption">
@@ -64,7 +64,7 @@ class CarouselView extends React.Component{
             </div>
         )
         }
-        return <div className="loader"></div>
+        return <div className="loader loader-carousel"><img src={spinner} style={{width:"40px",height:"40px"}}/></div>
         
     }
 }
@@ -73,4 +73,4 @@ const mapStateToProps=state=>{
         videos:state.videos
     }
 }
-export default withRouter(connect(mapStateToProps,{fetchLatestVideos})(CarouselView));
+export default withRouter(connect(mapStateToProps,{fetchLatestVideos})(playVideo(CarouselView)));

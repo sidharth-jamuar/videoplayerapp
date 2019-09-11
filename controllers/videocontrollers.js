@@ -66,6 +66,8 @@ exports.incrementView=(req,res)=>{
     .then(video=>{res.send(video)})
 }
 exports.fetchMostViewedVideos=(req,res)=>{
-    Video.find({}).sort({views:-1}).limit(5)
-    .then(video=>res.send(video));
+    console.log(req.query.isMobile)
+    limit=parseInt(req.query.isMobile)
+  Video.find({}).sort({views:-1}).limit(limit)
+  .then(video=>res.send(video));
 }
