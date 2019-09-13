@@ -13,7 +13,7 @@ exports.uploadVideo=(req,res)=>{
        title:req.body.title,
        Description:req.body.Description,
        Url:req.file.originalname.split(" ").join("").trim(),
-       image:"deku.jpg",
+       image:"naruto.jpg",
         tags:["anime","music"],
         uploader:req.body.user,
         private:req.body.private

@@ -76,7 +76,7 @@ class VideoPlayer extends Component{
                 This video has been marked private by the user.If you want to view this video please send a request to the uploader.
                 <div className="request-send-container">
                     <button className="btn-common btn-cancel" onClick={e=>{this.props.history.push("/")}}>Cancel</button>
-                    <button className="btn-request btn-common" onClick={e=>{this.props.sendVideoRequest(targetInfo.uploader,this.props.user.username,targetInfo.title,targetInfo._id)}}>Send Request</button>
+                    <button className="btn-request btn-common" onClick={e=>{this.props.sendVideoRequest(targetInfo.uploader,this.props.user.username,targetInfo.title,targetInfo._id,this.props.history)}}>Send Request</button>
                 </div>
                 </div>
         }

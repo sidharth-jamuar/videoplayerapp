@@ -56,10 +56,11 @@ export const loginGoogleUser=(data={},history)=>{
     }
 
  }}
- export const sendVideoRequest=(uploader,requester,title,id)=>{
+ export const sendVideoRequest=(uploader,requester,title,id,history)=>{
     return async dispatch=>{
         const res=await axios.get(`http://localhost:3004/api/requestAccess?uploader=${uploader}&requester=${requester}&title=${title}&id=${id}`)
         console.log(res.data)
+        history.push("/")
     }
  }
  export const approveRequest= (name,id,uploader)=>{return async dispatch=> {

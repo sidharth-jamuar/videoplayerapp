@@ -32,7 +32,7 @@ class Profile extends Component{
         fd.append('video',this.state.selectedFile,this.state.selectedFile.name);
         fd.append('title',this.state.title);
         fd.append('Description',this.state.Description);
-        fd.append('user',this.props.user)
+        fd.append('user',this.props.user.username)
         fd.append('private',this.state.private)
        this.props.dispatch(uploadVideo(fd))
        this.setState({uploadLink:false,showVideos:true})
@@ -44,7 +44,7 @@ class Profile extends Component{
                 <React.Fragment key={video._id} >
                 <div className="own-video-data-container" onClick={e=>{this.playVideo(video)}}>
                 <div className="own-video-image-container">
-                <img src={`/assets/images/${video.image}`} width="150px" height="300px"/>
+                <img src={`/assets/images/${video.image}`} width="200px" height="300px"/>
                 </div>
                 <div className="own-video-information-container">
                 <div>{video.title}</div>

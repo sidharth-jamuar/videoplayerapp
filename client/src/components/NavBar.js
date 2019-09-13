@@ -33,7 +33,8 @@ class NavBar extends React.Component{
         })
     }
 
-onlogout(e){
+onlogout=(e)=>{
+    console.log(this)
 e.preventDefault();
 localStorage.removeItem("token");
 const isAuth=false
