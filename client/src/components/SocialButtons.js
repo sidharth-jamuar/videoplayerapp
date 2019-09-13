@@ -16,6 +16,9 @@ const styleObj={
 class SocialButtons extends React.Component{
     constructor(props){
         super(props);
+    }//handle social login
+    doNothing=()=>{
+        console.log("hello")
     }
     handleSocialLogin=(user)=>{
         console.log(user)
