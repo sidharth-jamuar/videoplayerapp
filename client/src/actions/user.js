@@ -58,7 +58,7 @@ export const loginGoogleUser=(data={},history)=>{
  }}
  export const sendVideoRequest=(uploader,requester,title,id,history)=>{
     return async dispatch=>{
-        const res=await axios.get(`http://localhost:3004/api/requestAccess?uploader=${uploader}&requester=${requester}&title=${title}&id=${id}`)
+        const res=await axios.get(`/api/requestAccess?uploader=${uploader}&requester=${requester}&title=${title}&id=${id}`)
         console.log(res.data)
         history.push("/")
     }
