@@ -54,7 +54,8 @@ export const fetchMostViewedVideos=(isMobile)=>{
 }
 export const fetchMyVideos=(user)=>{
     return async dispatch =>{
-        const res=await axios.get(`/api/user/videolist?user=${user}`)
+        const res=await axios.get(`http://localhost:3004/api/user/videolist?user=${user}`)
+        console.log(res.data)
         dispatch({
             type:"FETCH_OWN_VIDEOS",
             payload:res.data

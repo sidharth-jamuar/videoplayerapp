@@ -19,7 +19,6 @@ app.use(function(req, res, next) {
    }
   });
 app.use(cors({origin:"http://localhost:3000"}))
-require("./services/passport")
 const PORT=process.env.PORT || 3004;
 
 mongoose.Promise=global.Promise;

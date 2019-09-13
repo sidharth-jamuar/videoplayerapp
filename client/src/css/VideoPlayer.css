@@ -11,6 +11,17 @@
     margin-left:20px;
 }
 
+.video-is-private{
+    margin-top:60px;
+    color:white;
+    background:yellowgreen;
+    border:none;
+    margin:60px 20px 20px 20px;
+    padding:10px;
+}
+.request-send-container{
+    padding:20px;
+}
 @media screen and (max-width:748px){
     .react-player-container{
         display:flex;

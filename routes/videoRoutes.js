@@ -48,4 +48,7 @@ module.exports=app=>{
    app.get("/api/mostViewedVideos",controllers.fetchMostViewedVideos)
    app.get("/api/deleteTagFromVideo",controllers.deleteTagFromVideo)
    app.get("/api/incrementView",controllers.incrementView)
+   app.get("/api/requestAccess",controllers.sendVideoRequest)
+   app.post("/api/approveRequest",controllers.approveRequest)
+   app.post("/api/declineRequest",controllers.declineRequest)
 }

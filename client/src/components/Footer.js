@@ -19,7 +19,7 @@ class  Footer extends React.Component{
         e.preventDefault();
         localStorage.removeItem("token");
         const isAuth=false
-        this.props.dispatch(isAuthenticated(isAuth))
+        this.props.dispatch(isAuthenticated(isAuth,this.props.history))
         }
     render()
     {
@@ -39,7 +39,7 @@ class  Footer extends React.Component{
             <div className="searchBar-footer-container">
                 <input type="text" id="search-input-footer"  onChange={e=>{this.setState({keyword:e.target.value})}}/>
                 <FontAwesomeIcon className="icon-fawesome" id="btn-footer" icon={faSearch} size="2x" color="white" onClick={e=>this.props.dispatch(searchVideo(this.state.keyword,this.props.history))}/>
-                <div className="close-btn" onClick={e=>{this.setState({searchBar:false})}}>x</div>
+                <div className="close-btn" onClick={e=>{this.setState({searchBar:false})}}>X</div>
             </div>}
             </React.Fragment>
          

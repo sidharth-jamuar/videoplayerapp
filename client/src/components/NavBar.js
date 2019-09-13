@@ -37,7 +37,7 @@ onlogout(e){
 e.preventDefault();
 localStorage.removeItem("token");
 const isAuth=false
-this.props.dispatch(isAuthenticated(isAuth))
+this.props.dispatch(isAuthenticated(isAuth,this.props.history))
 }
 
 render(){

@@ -29,8 +29,8 @@
 #search-input-footer{
 flex:80%;
 border:none;
-background-color: black;
-color:white;
+background-color: white;
+color:black;
 }
 #search-input-footer:hover{
    border:1px solid blue
@@ -40,13 +40,14 @@ color:white;
     margin-left:5px;
     border:none;
     text-decoration: none;
-    color:black;
+    color:white;
     flex:10%;
 }
 .close-btn{
     flex:10%;
+
     height:40px;
-    color:black;
+    color:white;
     width:20px;
     text-align: center;
     cursor:pointer;

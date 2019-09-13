@@ -27,7 +27,7 @@ class CarouselView extends React.Component{
             return (
             <div className={`item ${i===0?"active":""}`} key={i} onClick={e=>{this.props.playVideo(video)}}>
           
-          <img src={`${path}/${video["image"]}`} alt="Chania" style={{width:"50px",height:"250px"}} />
+          <img src={`${path}/${video["image"]}`} alt="Chania" style={{width:"100%",height:"250px"}} />
           <div className="carousel-caption">
             <div>Title<h3>{video["title"]}</h3></div>
            <div>Description<p>{video["Description"]}</p></div> 

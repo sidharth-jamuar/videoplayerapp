@@ -4,8 +4,8 @@ const {Schema}=mongoose;
 const userSchema=new Schema({
     username:String,
     id:String,
-    password:String
-   
+    password:String,
+   requests:{type:Array}
 })
 const User=mongoose.model('user',userSchema)
 

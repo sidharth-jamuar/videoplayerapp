@@ -5,9 +5,9 @@ const videoReducer=(state=videoReducerInitialState,action)=>{
         case "FETCH_VIDEOS":
         return {...state,latestVideos:action.payload}
         case "UPLOAD_VIDEOS":
-        return {...state,...action.payload}
+        return {...state,userVideos:{...state.userVideos,...action.payload}}
         case "FETCH_OWN_VIDEOS":
-        return {...state,...action.payload}
+        return {...state,userVideos:action.payload}
         case "FETCH_MOST_VIEWED":
             return {...state,mostViewed:action.payload}
         case "SEARCH_VIDEOS":

@@ -3,34 +3,70 @@ import ReactPlayer from "react-player"
 import "../css/VideoPlayer.css"
 import {connect} from "react-redux";
 import {incrementView} from "../actions/videos"
+import {sendVideoRequest} from "../actions/user"
 class VideoPlayer extends Component{
     constructor(props){
         super(props)
        this.video=React.createRef();
        
     }
-    componentWillUpdate(){
-        const targetInfo=this.props.location.state.activeVideo
-         localStorage.setItem(`${targetInfo.title}`,this.video.current.getCurrentTime())
+//     componentWillUpdate(){
+//         const targetInfo=this.props.location.state.activeVideo
+//          localStorage.setItem(`${targetInfo.title}`,this.video.current.getCurrentTime())
         
        
-    }
-    componentWillUnmount(){
-        const targetInfo=this.props.location.state.activeVideo
-        localStorage.setItem(`${targetInfo.title}`,this.video.current.getCurrentTime())
-    }
-    componentDidUpdate(){
-        const targetInfo=this.props.location.state.activeVideo
-  this.video.current.seekTo(localStorage.getItem(`${targetInfo.title}`))  
-    }
+//     }
+//     componentWillUnmount(){
+        
+//         const targetInfo=this.props.location.state.activeVideo
+//         localStorage.setItem(`${targetInfo.title}`,this.video.current.getCurrentTime())
+//     }
+//     componentDidUpdate(){
+//         const targetInfo=this.props.location.state.activeVideo
+//   this.video.current.seekTo(localStorage.getItem(`${targetInfo.title}`))  
+//     }
     componentDidMount(){
         const video=this.props.location.state.activeVideo;
+        if(!video.private && video.uploader !==this.props.user.username)
         this.props.incrementView(video._id)
-
+        
+    }
+    doesUserHaveAccess=()=>{
+        const video=this.props.location.state.activeVideo;
+       
+     const x=video.access.find(item=>item===this.props.user.username)
+     console.log(x)
+        if(x){
+            return true
+        }
+        else{
+            return false
+        }
     }
     render(){
+        console.log(this.props)
         const targetInfo=this.props.location.state.activeVideo
         console.log(targetInfo)
+        if(this.props.user===undefined && targetInfo.private){
+            return <div className="video-is-private">
+            This video has been marked private by the user.If you want to view this video please send a request to the uploader.
+            Please Login to send request.
+            <div className="request-send-container">
+                <button className="btn-common btn-cancel" onClick={e=>{this.props.history.push("/")}}>Go To Homepage</button>
+                <button className="btn-request btn-common" onClick={e=>{this.props.history.push("/login")}}>Login</button>
+            </div>
+            </div>
+        }
+        if( this.props.user &&targetInfo.private && (targetInfo.uploader !==this.props.user.username && !this.doesUserHaveAccess())){
+            return <div className="video-is-private">
+                This video has been marked private by the user.If you want to view this video please send a request to the uploader.
+                <div className="request-send-container">
+                    <button className="btn-common btn-cancel" onClick={e=>{this.props.history.push("/")}}>Cancel</button>
+                    <button className="btn-request btn-common" onClick={e=>{this.props.sendVideoRequest(targetInfo.uploader,this.props.user.username,targetInfo.title,targetInfo._id)}}>Send Request</button>
+                </div>
+                </div>
+        }
+ 
         return(
             <div className="react-player-container">
                 <div className="react-player"><ReactPlayer url={`/assets/videos/${targetInfo.Url}`} controls playing ref={this.video} pip  width="100%" height="100%"/></div>
@@ -46,5 +82,16 @@ class VideoPlayer extends Component{
         )
     }
 }
-
-export default connect(null,{incrementView})(VideoPlayer);
+const mapStateToProps=state=>{
+    return{
+    user:state.users.user
+    }
+}
+const mergeProps=(stateProps,dispatchProps,ownProps)=>{
+   return Object.assign({},ownProps,{
+       user:stateProps.user,
+       incrementView:dispatchProps.incrementView,
+       sendVideoRequest:dispatchProps.sendVideoRequest
+    })
+}
+export default connect(mapStateToProps,{incrementView,sendVideoRequest},mergeProps)(VideoPlayer);

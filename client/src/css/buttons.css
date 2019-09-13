@@ -24,7 +24,18 @@
     cursor:pointer;
 }
 
+.btn-cancel{
+    background-color: red;
+    border:none;
+    padding:10px;
 
+}
+.btn-request{
+    background-color: blue;
+    border:none;
+    padding:10px;
+    margin-left:10px;
+}
 .btn-search{
 color:white;
 background:green;
@@ -46,7 +57,7 @@ text-decoration: none;
 color:white;
 }
 .btn-common:hover{
-    color:red;
+    color:greenyellow;
     cursor:pointer;
 }
 .btn-login{
@@ -64,4 +75,7 @@ background: none;
 }
 .btn-signup:hover{
     color:red;
+}
+.btn-request{
+    color:white;
 }

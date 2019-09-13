@@ -22,7 +22,7 @@ class Login extends Component{
                <div className="field-container-login">
                <div className="label-field"> <label>{field.label}</label></div>
                <div className="input-field">
-               <input  type={field.type} className="input"
+               <input  type={field.type} className="input" value={this.state.name}
                  onChange={e=>{this.handleChange(e.target.value,field.name)}} />
                </div>    
                
