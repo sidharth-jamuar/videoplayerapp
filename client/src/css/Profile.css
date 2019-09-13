@@ -141,5 +141,6 @@ list-style: none;
         flex:20%;
         display:flex;
         background-color: rgba(48, 51, 58, 0.514);
+        height:400px;
     }
 }
