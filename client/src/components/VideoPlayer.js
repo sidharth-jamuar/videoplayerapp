@@ -27,9 +27,23 @@ class VideoPlayer extends Component{
 //     }
     componentDidMount(){
         const video=this.props.location.state.activeVideo;
-        if(!video.private && video.uploader !==this.props.user.username)
+        console.log(this.props)
+        if(this.props.user===undefined){
+            this.props.incrementView(video._id)
+        }
+        if( this.props.user && video.uploader !==this.props.user.username)
+        {
         this.props.incrementView(video._id)
-        
+        }
+     
+    }
+    componentDidUpdate(prevProps){
+        console.log(this.props)
+        console.log(prevProps)
+        const video=this.props.location.state.activeVideo;
+        if(this.props.user!==prevProps.user){
+          
+        }
     }
     doesUserHaveAccess=()=>{
         const video=this.props.location.state.activeVideo;
@@ -44,7 +58,7 @@ class VideoPlayer extends Component{
         }
     }
     render(){
-        console.log(this.props)
+      
         const targetInfo=this.props.location.state.activeVideo
         console.log(targetInfo)
         if(this.props.user===undefined && targetInfo.private){
