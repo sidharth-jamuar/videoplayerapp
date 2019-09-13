@@ -16,7 +16,7 @@ class VideoList extends React.Component{
             return(
                 <div key={keys.id}>
                 <div className="list-container"  onClick={e=>{this.props.playVideo(keys)}}>
-                <div className="list-image-container" style={{width:"20px",height:"100px"}} ><img src={`/assets/images/${keys.image}`}  style={{width:"10px",height:"200px"}}/></div>
+                <div className="list-image-container" style={{width:"20px",height:"100px"}} ><img src={`/assets/images/${keys.image}`}  style={{width:"100%",height:"200px"}}/></div>
                 <div className="list-details-container">
                 <div className="details">Title: {keys.title}</div>
                 <div className="details"><span>Desc: </span>{keys.Description}</div>
