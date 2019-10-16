@@ -1,5 +1,8 @@
+const http=require("http")
 const express=require("express");
 const app=express();
+const server=http.createServer(app);
+const io=require("socket.io");
 const mongoose=require('mongoose')
 const cookieSession = require('cookie-session');
 const passport = require('passport');
@@ -49,4 +52,4 @@ if (process.env.NODE_ENV === 'production') {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
-app.listen(PORT,()=>console.log(`Server running on PORT ${PORT}`))
+server.listen(PORT,()=>console.log(`Server running on PORT ${PORT}`))

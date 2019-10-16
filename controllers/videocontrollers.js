@@ -8,11 +8,12 @@ exports.getList=(req,res)=>{
     })
 }
 exports.uploadVideo=(req,res)=>{
-
+console.log(req.file.location)
   const video= new Video({
        title:req.body.title,
        Description:req.body.Description,
-       Url:req.file.originalname.split(" ").join("").trim(),
+       //Url:req.file.originalname.split(" ").join("").trim(),
+       Url:req.file.location,
        image:"naruto.jpg",
         tags:["anime","music"],
         uploader:req.body.user,

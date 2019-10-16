@@ -4,6 +4,7 @@ import "../css/VideoPlayer.css"
 import {connect} from "react-redux";
 import {incrementView} from "../actions/videos"
 import {sendVideoRequest} from "../actions/user"
+import axios from "axios"
 class VideoPlayer extends Component{
     constructor(props){
         super(props)
@@ -35,7 +36,6 @@ class VideoPlayer extends Component{
         {
         this.props.incrementView(video._id)
         }
-     
     }
     componentDidUpdate(prevProps){
         console.log(this.props)
@@ -83,7 +83,7 @@ class VideoPlayer extends Component{
  
         return(
             <div className="react-player-container">
-                <div className="react-player"><ReactPlayer url={`/assets/videos/${targetInfo.Url}`} controls playing ref={this.video} pip  width="100%" height="100%"/></div>
+                <div className="react-player"><ReactPlayer url={targetInfo.Url} controls playing ref={this.video} pip  width="100%" height="100%"/></div>
                 
                 <div className="target-info-container">
                 {targetInfo.views && <div><span>Views:</span>{targetInfo.views}</div>} 

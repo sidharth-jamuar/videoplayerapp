@@ -3,17 +3,37 @@ const aws=require('aws-sdk');
 const multerS3=require('multer-s3');
 const multer=require("multer");
 const path=require("path")
-
-const storage=multer.diskStorage({
-   destination:function(req,file,cb){
-      cb(null,path.resolve(__dirname,".././client/public/assets/videos"));
-   },
-   filename:function(req,file,cb){
-      cb(null,file.originalname.trim().split(" ").join(""))
-   }
+const keys=require("../config/keys")
+aws.config.update({
+   secretAccessKey:keys.AWS_SECRET_ACCESS_KEY,
+   accessKeyId:keys.AWS_ACCESS_KEY_ID,
+   region:keys.AWS_REGION
 })
+// const storage=multer.diskStorage({
+//    destination:function(req,file,cb){
+//       cb(null,path.resolve(__dirname,".././client/public/assets/videos"));
+//    },
+//    filename:function(req,file,cb){
+//       cb(null,file.originalname.trim().split(" ").join(""))
+//    }
+// })
 
-const upload=multer({storage})
+//const upload=multer({storage})
+const s3=new aws.S3();
+const upload = multer({
+   storage: multerS3({
+    acl:'public-read',
+     s3: s3,
+     bucket:keys.AWS_BUCKET ,
+     
+     metadata: function (req, file, cb) {
+       cb(null, {fieldName: file.fieldname});
+     },
+     key: function (req, file, cb) {
+       cb(null, file.originalname.trim().split(" ").join(""))
+     }
+   })
+ })
 module.exports=app=>{
    app.get("/api/videolist",controllers.getList)
    app.post("/api/uploadVideo",upload.single('video'),controllers.uploadVideo);

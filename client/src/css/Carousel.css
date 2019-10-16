@@ -15,3 +15,9 @@
    
     display:flex;
 }
+.title-class{
+    padding-right:10%;
+}
+.description-class{
+    padding-left:40%;
+}
