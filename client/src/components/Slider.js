@@ -12,7 +12,10 @@ class Slider extends React.Component{
       
     }
     componentDidMount(){
+      console.log(this.props.sliderType)
+      if(this.props.sliderType==="mostViewed") {
         this.props.fetchMostViewedVideos(this.props.isMobile?3:5)
+      }
     
     }
     renderSlider(){
@@ -23,7 +26,7 @@ class Slider extends React.Component{
       {item===1 &&<a href="#section3">‹</a>}
       {item===2 &&<a href="#section1">‹</a>}
       {item===3 &&<a href="#section2">‹</a>}
-       {this.props.videos.mostViewed.map((video,i)=>{
+       {this.props.videos.map((video,i)=>{
          return(
            <React.Fragment key={i}>
                <div className="item" onClick={e=>this.props.playVideo(video)}>
@@ -47,8 +50,8 @@ class Slider extends React.Component{
       })
     }
     render(){
-      console.log(this.props)
-      if(this.props.videos.mostViewed && this.props.videos.mostViewed.length >0){
+
+      if(this.props.videos&& this.props.videos.length >0){
         return(
             <div className="slider-container">
              <div className="wrapper">
@@ -61,9 +64,10 @@ class Slider extends React.Component{
       return <div className="loader loader-slider"><img src={spinner} style={{width:"40px",height:"40px"}}/></div>
     }
 }
-const mapStateToProps=state=>{
+const mapStateToProps=(state,ownProps)=>{
+  console.log(ownProps)
     return{
-        videos:state.videos
+        videos:state.videos[ownProps.sliderType]
     }
 }
     export default withRouter(connect(mapStateToProps,{fetchMostViewedVideos})(screenIsMobile((playVideo(Slider)))));

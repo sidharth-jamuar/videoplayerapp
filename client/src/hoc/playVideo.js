@@ -6,7 +6,6 @@ export default function(ComposedComponent){
             super(props)
         }
         playVideo=(activeVideo)=>{
-            console.log(activeVideo);
             this.props.history.push({pathname:`/video/${activeVideo._id}`,state:{activeVideo}})
         }
         render(){

@@ -11,7 +11,8 @@ const videoSchema=new Schema({
     uploader:{type:String},
     private:{type:Boolean,default:false},
     views:{type:Number,default:0},
-    access:{type:Array}
+    access:{type:Array},
+    UploadDate:{type:String,default:new Date().toLocaleString()}
 })
 const Video=mongoose.model('video',videoSchema)
 module.exports={Video}

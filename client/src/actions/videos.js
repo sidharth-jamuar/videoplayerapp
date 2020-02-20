@@ -1,5 +1,5 @@
 import axios from "axios";
-import { receiveAction } from ".";
+import { receiveAction } from "./index";
 import { actionType } from "../constants/actionType";
 export const uploadVideo=(fd)=>{
     console.log(fd)

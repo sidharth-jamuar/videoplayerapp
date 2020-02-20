@@ -5,7 +5,8 @@ import "../css/spinner.css"
 import "../css/buttons.css"
 import {uploadVideo,fetchMyVideos} from "../actions/videos"
 import {declineRequest,approveRequest} from "../actions/user"
-import axios from "axios"
+import {Dropdown} from "semantic-ui-react";
+import {tags} from "../constants/constants"
 class Profile extends Component{
     constructor(props){
         super(props)
@@ -17,7 +18,8 @@ class Profile extends Component{
             requests:false,
             private:false,
             title:"",
-            Description:""
+            Description:"",
+            videoTags:[]
         }
     }
     playVideo=(activeVideo)=>{
@@ -34,6 +36,8 @@ class Profile extends Component{
         fd.append('Description',this.state.Description);
         fd.append('user',this.props.user.username)
         fd.append('private',this.state.private)
+        fd.append('tags',this.state.videoTags);
+        fd.append('upload_date',new Date().toLocaleString())
        this.props.dispatch(uploadVideo(fd))
        this.setState({uploadLink:false,showVideos:true})
     }
@@ -82,7 +86,7 @@ class Profile extends Component{
         this.props.dispatch(fetchMyVideos(this.props.user.username))
     }
     render(){
-        console.log(this.props)
+        console.log(this.state.videoTags)
         return(
             
             <div className="profile-container">
@@ -118,9 +122,12 @@ class Profile extends Component{
             <label className="label-upload">Description</label><input className="input-text" type="text" onChange={e=>{this.setState({Description:e.target.value})}} value={this.state.Description}/>
             </div>
             <div className="input-container">
-            <label className="label-upload" id="private-label">Private</label><input className="input-text" type="checkbox" name="private" checked={this.state.private} onChange={e=>{this.handleCheckBox(e)}}/>
+            <label className="label-upload" id="private-label">Mark as Private</label><input className="input-text" type="checkbox" name="private" checked={this.state.private} onChange={e=>{this.handleCheckBox(e)}}/>
             </div>
-           
+            <Dropdown className="drop-down-field" placeholder='Tags' fluid multiple selection options={tags}
+            value={this.state.videoTags}
+            onChange={(e,data)=>{this.setState({videoTags:data.value})}} />
+
             <button type="submit" className="btn-submit" id="upload-submit">Upload</button>
             </form>
             </div>
