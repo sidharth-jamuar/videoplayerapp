@@ -63,7 +63,7 @@ list-style: none;
     color:white;
 }
 #private-label{
-    text-align: center;
+    text-align: left;
 }
 .input-file{
     min-width:95%;
