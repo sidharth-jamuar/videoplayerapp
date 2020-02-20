@@ -13,7 +13,6 @@ export default function (ComposedComponent) {
     }
 
     _checkAndRedirect() {
-      const {isAuth} = this.props;
         const authToken=localStorage.getItem("token")
       if (!authToken) {
        this.props.history.push("/login")
@@ -22,7 +21,7 @@ export default function (ComposedComponent) {
     }
 
     render() {
-        console.log(this.props.history)
+
       return (
         <div>
           { <ComposedComponent {...this.props} />  }

@@ -27,15 +27,3 @@ export default function(ComposedComponent){
     }
     return IsMobile;
 }
-
-
-// export const isMobile=()=>{
-//    if(window.innerWidth<=748){
-//        console.log("less than")
-//        return true
-//    }
-//    else{
-//        console.log("greater than")
-//        return false
-//    }
-// }

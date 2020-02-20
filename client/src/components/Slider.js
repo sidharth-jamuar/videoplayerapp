@@ -28,8 +28,10 @@ class Slider extends React.Component{
            <React.Fragment key={i}>
                <div className="item" onClick={e=>this.props.playVideo(video)}>
                  <div className="slider-container"> <img src={`/assets/images/${video.image}`} width="100%" height="160px"/>
-                 <div>Title:{video.title}</div>
-                 <div>Desc:{video.Description.substr(0,12)}</div>
+                 <div className="slider-info">
+                 <div className="slider-title">Title:{video.title}</div>
+                 <div className="slider-description">Desc:{video.Description.substr(0,12)}</div>
+                 </div>
                  </div>
                 
                </div>

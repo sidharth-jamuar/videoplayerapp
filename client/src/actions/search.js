@@ -1,19 +1,35 @@
 import axios from "axios";
+import { receiveAction } from ".";
+import { actionType } from "../constants/actionType";
+
 export const searchVideo=(keyword,history)=>{
-    console.log(keyword)
     return async dispatch =>{
-        const res=await axios.get(`/api/searchVideo?keyword=${keyword}`)
-        if(res.data){
-        dispatch({
-            type:"SEARCH_VIDEOS",
-            payload:res.data
-        })
+        try {
+        let res;
+        res=await axios.get(`http://localhost:3004/api/searchVideo?keyword=${keyword}`);
+        dispatch(receiveAction(actionType.search.SEARCH_VIDEOS,res.data))
         history.push("/search")
-    }
-    else{
-        dispatch({
-            type:"ERROR_VIDEO"
-        })
+}
+        catch (err){
+        dispatch(receiveAction(actionType.search.ERROR_VIDEO))
     }
     }
+}
+
+export const clearSearchList =() => dispatch => {
+    dispatch(receiveAction(actionType.search.CLEAR_SEARCH_LIST,undefined))
+}
+export  const infinite=(keyword,pagination,hideLoader) => {
+    return async dispatch => {
+    let res;
+    if(Object.keys(pagination).length >0){
+        res=await axios.get(`http://localhost:3004/api/searchVideo?keyword=${keyword}&start=${pagination.start}&end=${pagination.end}`);
+        console.log(res.data)
+        dispatch(receiveAction(actionType.search.SEARCH_VIDEOS,res.data))
+       }
+    //    if(hideLoader) {
+    //     console.log("hide")
+    //     hideLoader();
+    // }
+}
 }

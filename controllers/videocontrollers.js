@@ -27,12 +27,21 @@ console.log(req.file.location)
   })
 }
 exports.searchVideo=(req,res)=>{
-    console.log(req.query)
     let regexp=new RegExp(`${req.query.keyword}`,'gi');
-    Video.find({title:regexp}).then(videos=>{
+    if(!req.query.start || !req.query.end) {
+        Video.find({title:regexp}).limit(4).then(videos=>{
+            console.log(videos)
+            res.send(videos)
+        })
+    }
+   else {
+       console.log("here")
+    let regexp=new RegExp(`${req.query.keyword}`,'gi');
+    Video.find({title:regexp}).skip(parseInt(req.query.start)).limit(parseInt(req.query.end)).then(videos=>{
         console.log(videos)
         res.send(videos)
     })
+   }
 }
 exports.getUploadedVideos=(req,res)=>{
     console.log(req.query)
@@ -71,7 +80,6 @@ exports.incrementView=(req,res)=>{
     .then(video=>{res.send(video)})
 }
 exports.fetchMostViewedVideos=(req,res)=>{
-    console.log(req.query.isMobile)
     limit=parseInt(req.query.isMobile)
   Video.find({}).sort({views:-1}).limit(limit)
   .then(video=>res.send(video));

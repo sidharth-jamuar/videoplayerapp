@@ -23,7 +23,8 @@
     "react-social-login": "^3.4.4",
     "redux": "^4.0.1",
     "redux-multi": "^0.1.12",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "typescript": "^3.7.4"
   },
   "scripts": {
     "start": "react-scripts start",

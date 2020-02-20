@@ -1,0 +1,20 @@
+export const actionType={
+    search: {
+        SEARCH_VIDEOS:"SEARCH_VIDEOS",
+        ERROR_VIDEO:"ERROR_VIDEO",
+        CLEAR_SEARCH_LIST:"CLEAR_SEARCH_LIST"
+    },
+    user: {
+        LOGIN_USER:"LOGIN_USER",
+        LOGOUT_USER:"LOGOUT_USER",
+        IS_AUTH:"IS_AUTH",
+        UPDATE_USER:"UPDATE_USER"
+    },
+    video: {
+        UPLOAD_VIDEO:"UPLOAD_VIDEO",
+        FETCH_VIDEOS:"FETCH_VIDEOS",
+        FETCH_MOST_VIEWED:"FETCH_MOST_VIEWED",
+        FETCH_OWN_VIDEOS:"FETCH_OWN_VIDEOS",
+        SEARCH_VIDEOS:"SEARCH_VIDEOS"
+    }
+}

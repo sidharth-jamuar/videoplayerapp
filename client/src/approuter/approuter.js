@@ -4,13 +4,12 @@ import requireAuth from "../hoc/auth"
 import playVideo from "../hoc/playVideo"
 import Footer from "../components/Footer.js"
 import {BrowserRouter,Route,Switch} from "react-router-dom"
-import {renderHomepage,renderLogin,renderProfile,renderVideoList,renderVideoPlayer}
-from "./lazy"
+import {renderHomepage,renderLogin,renderProfile,renderVideoList,renderVideoPlayer} from "./lazy"
 
 const AppRouter=()=>{
     return (
        <BrowserRouter>
-       <div>
+       <div> 
        <NavBar />
        <Route path="/" exact component={renderHomepage} />
        <Route path="/search" exact component={playVideo(renderVideoList)} />

@@ -1,4 +1,4 @@
-const token=localStorage.getItem("token") || null
+const token=localStorage.getItem("token") || undefined
 export const headers={
-    'Authorization':'Bearer '+token
+    'Authorization':'Bearer '+ token
 }

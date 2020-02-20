@@ -1,8 +1,10 @@
+import { actionType } from "../constants/actionType";
+
 const searchInitialState="";
 
 const searchReducer=(state=searchInitialState,action)=>{
-    switch(actiontype){
-        case "SEARCH_VIDEO":{
+    switch(action.type){
+        case actionType.search.SEARCH_VIDEOS:{
             return {...state,...action.payload}
         }
         default:

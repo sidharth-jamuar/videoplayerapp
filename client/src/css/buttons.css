@@ -57,14 +57,15 @@ text-decoration: none;
 color:white;
 }
 .btn-common:hover{
-    color:greenyellow;
+    color:red;
     cursor:pointer;
+    text-decoration: none;;
 }
 .btn-login{
     margin-left:5px;
     margin-top:1px;
     margin-right:5px;
-    font-weight:100;
+    font-weight:400;
     text-decoration: none;
 }
 .btn-signup{

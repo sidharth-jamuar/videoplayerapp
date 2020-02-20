@@ -12,7 +12,7 @@ class  Footer extends React.Component{
         super(props)
         this.state={
             searchBar:false,
-            keyword:""
+            keyword:"",
         }
     }
     onlogout(e){
@@ -21,6 +21,7 @@ class  Footer extends React.Component{
         const isAuth=false
         this.props.dispatch(isAuthenticated(isAuth,this.props.history))
         }
+  
     render()
     {
     const isAuth=this.props.isAuth
@@ -48,7 +49,8 @@ class  Footer extends React.Component{
         }
 const mapStateToProps=state=>{
     return{
-        isAuth:state.isAuth.auth
+        isAuth:state.isAuth.auth,
+        videos:state.videos
     }
 }
 

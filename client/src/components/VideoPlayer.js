@@ -11,21 +11,6 @@ class VideoPlayer extends Component{
        this.video=React.createRef();
        
     }
-//     componentWillUpdate(){
-//         const targetInfo=this.props.location.state.activeVideo
-//          localStorage.setItem(`${targetInfo.title}`,this.video.current.getCurrentTime())
-        
-       
-//     }
-//     componentWillUnmount(){
-        
-//         const targetInfo=this.props.location.state.activeVideo
-//         localStorage.setItem(`${targetInfo.title}`,this.video.current.getCurrentTime())
-//     }
-//     componentDidUpdate(){
-//         const targetInfo=this.props.location.state.activeVideo
-//   this.video.current.seekTo(localStorage.getItem(`${targetInfo.title}`))  
-//     }
     componentDidMount(){
         const video=this.props.location.state.activeVideo;
         console.log(this.props)

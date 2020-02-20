@@ -1,17 +1,20 @@
+import { actionType } from "../constants/actionType";
+
 const userInitialState={};
 
 const userReducer=(state=userInitialState,action)=>{
     switch(action.type){
-        case "LOGIN_USER":
+        case actionType.user.LOGIN_USER:
         return {...state,user:action.payload}
-        case "LOGOUT_USER":{
+        case actionType.user.LOGOUT_USER:{
             return {...state,user:action.payload}
         }
-        case "UPDATE_USER":{
+        case actionType.user.UPDATE_USER:{
             return {...state,user:action.payload}
         }
         default:
         return state;
     }
 }
+
 export default userReducer;

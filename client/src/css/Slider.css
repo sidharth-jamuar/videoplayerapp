@@ -55,5 +55,11 @@ h1 {
     }
   
 .slider-container{
-  color:black;
+  font-size:14px;
+  color:white;
+}
+.slider-info{
+  margin-top:10px;
+  background-color: #b0c5c5;
+  
 }
