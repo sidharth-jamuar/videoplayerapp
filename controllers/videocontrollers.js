@@ -15,9 +15,10 @@ console.log(req.file.location)
        //Url:req.file.originalname.split(" ").join("").trim(),
        Url:req.file.location,
        image:"naruto.jpg",
-        tags:["anime","music"],
+        tags:req.body.tags,
         uploader:req.body.user,
-        private:req.body.private
+        private:req.body.private,
+        UploadDate:req.body.upload_date
    })
    video.save().then(video=>{console.log(req.body.user);
    Video.find({uploader:req.body.user}).then(videos=>{
