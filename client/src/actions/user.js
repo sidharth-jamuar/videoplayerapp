@@ -4,7 +4,7 @@ import { actionType } from "../constants/actionType"
 export const loginUser=(data={},history)=>{
     
 return async dispatch=>{
-    const res=await axios.post("http://localhost:3004/api/login",data)
+    const res=await axios.post("/api/login",data)
     dispatch(receiveAction(actionType.user.LOGIN_USER,res.data))
    if(res.data.token){
        localStorage.setItem("user",JSON.stringify(res.data))
@@ -46,18 +46,18 @@ export const loginGoogleUser=(data={},history)=>{
  }}
  export const sendVideoRequest=(uploader,requester,title,id,history)=>{
     return async ()=>{
-        const res=await axios.get(`http://localhost:3004/api/requestAccess?uploader=${uploader}&requester=${requester}&title=${title}&id=${id}`)
+        const res=await axios.get(`/api/requestAccess?uploader=${uploader}&requester=${requester}&title=${title}&id=${id}`)
         history.push("/")
     }
  }
  export const approveRequest= (name,id,uploader)=>{return async dispatch=> {
-    const res=await  axios.post(`http://localhost:3004/api/approveRequest?name=${name}&id=${id}&uploader=${uploader}`)
+    const res=await  axios.post(`/api/approveRequest?name=${name}&id=${id}&uploader=${uploader}`)
     dispatch(receiveAction(actionType.user.UPDATE_USER,res.data))
   }
 }
  export const declineRequest=(name,uploader)=>{
  return async dispatch=>{
-   const res=await axios.post(`http://localhost:3004/api/declineRequest?name=${name}&uploader=${uploader}`)
+   const res=await axios.post(`/api/declineRequest?name=${name}&uploader=${uploader}`)
    console.log(res.data)
    dispatch(receiveAction(actionType.user.UPDATE_USER,res.data))
 }

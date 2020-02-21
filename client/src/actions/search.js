@@ -6,7 +6,7 @@ export const searchVideo=(keyword,history)=>{
     return async dispatch =>{
         try {
         let res;
-        res=await axios.get(`http://localhost:3004/api/searchVideo?keyword=${keyword}`);
+        res=await axios.get(`/api/searchVideo?keyword=${keyword}`);
         dispatch(receiveAction(actionType.search.SEARCH_VIDEOS,res.data))
         history.push("/search")
 }
@@ -23,7 +23,7 @@ export  const infinite=(keyword,pagination,hideLoader) => {
     return async dispatch => {
     let res;
     if(Object.keys(pagination).length >0){
-        res=await axios.get(`http://localhost:3004/api/searchVideo?keyword=${keyword}&start=${pagination.start}&end=${pagination.end}`);
+        res=await axios.get(`/api/searchVideo?keyword=${keyword}&start=${pagination.start}&end=${pagination.end}`);
         console.log(res.data)
         dispatch(receiveAction(actionType.search.SEARCH_VIDEOS,res.data))
        }
