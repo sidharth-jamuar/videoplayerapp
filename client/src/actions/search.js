@@ -19,7 +19,7 @@ export const searchVideo=(keyword,history)=>{
 export const clearSearchList =() => dispatch => {
     dispatch(receiveAction(actionType.search.CLEAR_SEARCH_LIST,undefined))
 }
-export  const infinite=(keyword,pagination,hideLoader) => {
+export  const infinite=(keyword,pagination) => {
     return async dispatch => {
     let res;
     if(Object.keys(pagination).length >0){
@@ -27,9 +27,6 @@ export  const infinite=(keyword,pagination,hideLoader) => {
         console.log(res.data)
         dispatch(receiveAction(actionType.search.SEARCH_VIDEOS,res.data))
        }
-    //    if(hideLoader) {
-    //     console.log("hide")
-    //     hideLoader();
-    // }
+   
 }
 }

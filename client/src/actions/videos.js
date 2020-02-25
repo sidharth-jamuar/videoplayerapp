@@ -6,7 +6,7 @@ export const uploadVideo=(fd)=>{
     return async dispatch =>{
            const res = await axios({
             method: 'post',
-            url: "/api/uploadVideo",
+            url: "http://localhost:3004/api/uploadVideo",
             data: fd,
             headers: {
             'content-type': `multipart/form-data; boundary=${fd._boundary}`,
