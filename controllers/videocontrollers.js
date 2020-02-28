@@ -35,6 +35,7 @@ exports.searchVideo=(req,res)=>{
         Video.find({title:regexp}).limit(4).then(videos=>{
             console.log(videos)
             redisClient.setex(req.query.keyword,3600,JSON.stringify(videos));
+            console.log("main")
             res.send(videos)
         })
     }

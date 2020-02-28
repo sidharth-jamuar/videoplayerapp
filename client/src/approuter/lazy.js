@@ -4,7 +4,7 @@ import "../css/spinner.css"
 const Login =lazy(()=>import("../components/Login")) 
 const Profile =lazy(()=>import("../components/Profile")) 
 const VideoList=lazy(()=>import("../components/VideoList"))
-const VideoPlayer=lazy(()=>import("../components/VideoPlayer")) ;
+const VideoPlayerView=lazy(()=>import("../components/VideoPlayerView")) ;
 const  Homepage=lazy(()=>import( "../components/Homepage"))
 
 export const renderLogin=(props)=>{
@@ -35,10 +35,10 @@ export const renderProfile=(props)=>{
         </Suspense>
     )
 }
-export const renderVideoPlayer=(props)=>{
+export const renderVideoPlayerView=(props)=>{
     return(
         <Suspense fallback={<div className="loader loader-search"><img src={spinner} /></div>}>
-            <VideoPlayer {...props} />
+            <VideoPlayerView {...props} />
         </Suspense>
     )
 }

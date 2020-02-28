@@ -6,7 +6,7 @@ export const uploadVideo=(fd)=>{
     return async dispatch =>{
            const res = await axios({
             method: 'post',
-            url: "http://localhost:3004/api/uploadVideo",
+            url: "/api/uploadVideo",
             data: fd,
             headers: {
             'content-type': `multipart/form-data; boundary=${fd._boundary}`,
@@ -18,32 +18,32 @@ export const uploadVideo=(fd)=>{
 }
 export const videoList=()=>{
     return async dispatch=>{
-    const res= await axios.get("http://localhost:3004/api/videoList")
+    const res= await axios.get("/api/videoList")
     dispatch(receiveAction(actionType.video.FETCH_VIDEOS,res.data))
     }
 }
 export const fetchLatestVideos= () => {
     return async dispatch=> {
-        const res=await axios.get("http://localhost:3004/api/latestVideos")
+        const res=await axios.get("/api/latestVideos")
         dispatch(receiveAction(actionType.video.FETCH_VIDEOS,res.data))
     }
 }
 export const fetchMostViewedVideos= (isMobile) =>{
     return async dispatch=>{
-        const res=await axios.get(`http://localhost:3004/api/mostViewedVideos?isMobile=${isMobile}`);
+        const res=await axios.get(`/api/mostViewedVideos?isMobile=${isMobile}`);
         dispatch(receiveAction(actionType.video.FETCH_MOST_VIEWED,res.data))
     }
 }
 export const fetchMyVideos= (user) =>{
     return async dispatch =>{
-        const res=await axios.get(`http://localhost:3004/api/user/videolist?user=${user}`)
+        const res=await axios.get(`/api/user/videolist?user=${user}`)
         dispatch(receiveAction(actionType.video.FETCH_OWN_VIDEOS,res.data))
     }
     
 }
 export const incrementView =id =>{
     return async () => {
-        const res=await axios.get(`http://localhost:3004/api/incrementView?id=${id}`)
+        const res=await axios.get(`/api/incrementView?id=${id}`)
        
     }
 }
