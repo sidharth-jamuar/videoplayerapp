@@ -1,10 +1,9 @@
 import React,{Component} from "react";
 import ReactPlayer from "react-player"
-import "../css/VideoPlayer.css"
+import "../../css/VideoPlayerView/VideoPlayer.css"
 import {connect} from "react-redux";
-import {incrementView} from "../actions/videos"
-import {sendVideoRequest} from "../actions/user"
-import axios from "axios"
+import {incrementView} from "../../actions/videos"
+import {sendVideoRequest} from "../../actions/user"
 class VideoPlayer extends Component{
     constructor(props){
         super(props)

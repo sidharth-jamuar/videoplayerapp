@@ -4,6 +4,7 @@ const multerS3=require('multer-s3');
 const multer=require("multer");
 const path=require("path")
 const keys=require("../config/keys")
+const redisMiddleware=require("../middlewares/redis")
 aws.config.update({
    secretAccessKey:keys.AWS_SECRET_ACCESS_KEY,
    accessKeyId:keys.AWS_ACCESS_KEY_ID,
@@ -60,7 +61,7 @@ module.exports=app=>{
    //        }
    //       }
    //      })},controllers.uploadVideo);
-   app.get("/api/searchVideo",controllers.searchVideo)
+   app.get("/api/searchVideo",redisMiddleware.checkCacheForVideoSearch(), controllers.searchVideo)
    app.get("/api/user/videolist",controllers.getUploadedVideos)
    app.post("/api/addvideo",controllers.addVideo)
    app.get("/api/addTagsToVideo",controllers.addTagsToVideo)

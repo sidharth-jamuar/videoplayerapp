@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import VideoPlayer from "./components/VideoPlayer.js"
+import VideoPlayer from "./components/VideoPlayerView/VideoPlayer.js/index.js"
 import VideoList from "./components/VideoList"
 import axios from "axios"
 import {connect} from "react-redux"

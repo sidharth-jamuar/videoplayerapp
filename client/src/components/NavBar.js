@@ -9,7 +9,7 @@ import {isAuthenticated} from "../actions/user"
 import { FaUserAlt} from "react-icons/fa";
 import { MdSend } from "react-icons/md";
 import { IoIosLogOut } from "react-icons/io";
-import {searchVideo} from "../actions/search"
+import {searchVideo,clearSearchList} from "../actions/search"
 class NavBar extends React.Component{
     constructor(props){
         super(props);
@@ -51,7 +51,7 @@ render(){
         <div className="searchBar">
       <input type="text" className="search"  placeholder="...Search "
       onChange={e=>{this.setState({keyword:e.target.value})}} />
-       <button className="btn-common btn-search" onClick={e=>{this.props.dispatch(searchVideo(this.state.keyword,this.props.history))}}>Search</button>
+       <button className="btn-common btn-search" onClick={e=>{this.props.dispatch(clearSearchList());this.props.dispatch(searchVideo(this.state.keyword,this.props.history))}}>Search</button>
         </div>
         <div className="main-buttons-container">
         <ul className="buttons-container">

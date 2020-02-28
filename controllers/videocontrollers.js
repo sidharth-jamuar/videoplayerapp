@@ -1,7 +1,9 @@
 const {list}=require("../data/VideoList")
 const mongoose=require('mongoose')
 const {Video}=require("../models/videos")
-const {User}=require("../models/users")
+const {User}=require("../models/users");
+const redisClient=require("../redis/redisClient");
+
 exports.getList=(req,res)=>{
     Video.find().limit(10).then(videos=>{
         res.send(videos)
@@ -32,6 +34,8 @@ exports.searchVideo=(req,res)=>{
     if(!req.query.start || !req.query.end) {
         Video.find({title:regexp}).limit(4).then(videos=>{
             console.log(videos)
+            redisClient.setex(req.query.keyword,3600,JSON.stringify(videos));
+            console.log("main")
             res.send(videos)
         })
     }
